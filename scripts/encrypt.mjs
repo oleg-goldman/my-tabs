@@ -45,24 +45,45 @@ async function getPassword() {
   return pw;
 }
 
-async function fetchFavicon(domain, cache) {
-  if (domain in cache) return cache[domain];
-  let dataUri = null;
+async function fetchImage(url) {
   try {
-    const res = await fetch(
-      `https://www.google.com/s2/favicons?domain=${encodeURIComponent(domain)}&sz=64`,
-      { signal: AbortSignal.timeout(6000) }
-    );
-    if (res.ok) {
-      const buf = Buffer.from(await res.arrayBuffer());
-      if (buf.length > 0) {
-        const type = res.headers.get('content-type') || 'image/png';
-        dataUri = `data:${type};base64,${buf.toString('base64')}`;
-      }
-    }
+    const res = await fetch(url, { signal: AbortSignal.timeout(6000) });
+    if (!res.ok) return null;
+    const type = res.headers.get('content-type') || '';
+    if (!type.startsWith('image/')) return null;
+    const buf = Buffer.from(await res.arrayBuffer());
+    if (!buf.length) return null;
+    return `data:${type.split(';')[0]};base64,${buf.toString('base64')}`;
   } catch {
-    /* нет сети или таймаут — останется монограмма */
+    return null; /* нет сети или таймаут — останется монограмма */
   }
+}
+
+// иконка из <link rel="icon"> на самой странице (для SPA и мелких доменов,
+// которых нет в сервисе Google)
+async function fetchIconFromHtml(domain) {
+  try {
+    const res = await fetch(`https://${domain}/`, { signal: AbortSignal.timeout(6000) });
+    if (!res.ok) return null;
+    const html = (await res.text()).slice(0, 100_000);
+    const tags = html.match(/<link[^>]+rel=["'][^"']*icon[^"']*["'][^>]*>/gi) || [];
+    for (const tag of tags) {
+      if (/rel=["'][^"']*(apple|mask)/i.test(tag)) continue;
+      const href = tag.match(/href=["']([^"']+)["']/i)?.[1];
+      if (!href) continue;
+      const icon = await fetchImage(new URL(href, `https://${domain}/`).href);
+      if (icon) return icon;
+    }
+  } catch { /* ignore */ }
+  return null;
+}
+
+async function fetchFavicon(domain, cache) {
+  if (cache[domain]) return cache[domain]; // null в кэше = пробуем снова
+  const dataUri =
+    await fetchImage(`https://www.google.com/s2/favicons?domain=${encodeURIComponent(domain)}&sz=64`)
+    ?? await fetchImage(`https://${domain}/favicon.ico`)
+    ?? await fetchIconFromHtml(domain);
   cache[domain] = dataUri;
   return dataUri;
 }
