@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Мои табы",
+  "version": "1.0.0",
+  "description": "Новая вкладка: мои ссылки с мгновенным поиском + поиск по истории браузера",
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "permissions": ["history", "favicon"],
+  "host_permissions": ["https://oleg-goldman.github.io/*"]
+}

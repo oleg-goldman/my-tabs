@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Мои табы</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="lock" class="lock hidden">
+    <form id="lock-form" class="lock-card">
+      <div class="lock-icon">🔒</div>
+      <input id="password" type="password" placeholder="Пароль" autocomplete="current-password">
+      <button type="submit">Открыть</button>
+      <p id="lock-error" class="lock-error"></p>
+    </form>
+  </div>
+
+  <main id="app" class="hidden">
+    <header class="topbar">
+      <div class="search-wrap">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line>
+        </svg>
+        <input id="search" type="search" placeholder="Поиск по моим табам и истории…" autocomplete="off" spellcheck="false">
+        <kbd class="search-kbd">/</kbd>
+      </div>
+      <button id="theme" class="theme-btn" title="Тема" aria-label="Переключить тему"></button>
+    </header>
+
+    <div id="content"></div>
+
+    <footer class="hints">
+      <span><kbd>/</kbd> поиск</span>
+      <span><kbd>↑↓←→</kbd> выбор</span>
+      <span><kbd>Enter</kbd> открыть</span>
+      <span><kbd>⌘Enter</kbd> в новой вкладке</span>
+    </footer>
+  </main>
+
+  <script src="config.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
