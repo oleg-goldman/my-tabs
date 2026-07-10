@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Мои табы</title>
+  <title>My Tabs</title>
   <link rel="icon" href="icons/icon48.png">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -12,8 +12,8 @@
   <div id="lock" class="lock hidden">
     <form id="lock-form" class="lock-card">
       <div class="lock-icon">🔒</div>
-      <input id="password" type="password" placeholder="Пароль" autocomplete="current-password">
-      <button type="submit">Открыть</button>
+      <input id="password" type="password" placeholder="Password" autocomplete="current-password">
+      <button type="submit">Unlock</button>
       <p id="lock-error" class="lock-error"></p>
     </form>
   </div>
@@ -24,19 +24,19 @@
         <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line>
         </svg>
-        <input id="search" type="search" placeholder="Поиск по моим табам и истории…" autocomplete="off" spellcheck="false">
+        <input id="search" type="search" placeholder="Search my tabs & history…" autocomplete="off" spellcheck="false">
         <kbd class="search-kbd">/</kbd>
       </div>
-      <button id="theme" class="theme-btn" title="Тема" aria-label="Переключить тему"></button>
+      <button id="theme" class="theme-btn" title="Theme" aria-label="Toggle theme"></button>
     </header>
 
     <div id="content"></div>
 
     <footer class="hints">
-      <span><kbd>/</kbd> поиск</span>
-      <span><kbd>↑↓←→</kbd> выбор</span>
-      <span><kbd>Enter</kbd> открыть</span>
-      <span><kbd>⌘Enter</kbd> в новой вкладке</span>
+      <span><kbd>/</kbd> search</span>
+      <span><kbd>↑↓←→</kbd> select</span>
+      <span><kbd>Enter</kbd> open</span>
+      <span><kbd>⌘Enter</kbd> new tab</span>
     </footer>
   </main>
 

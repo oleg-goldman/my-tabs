@@ -188,11 +188,11 @@ function renderResults(query) {
   if (!matches.length) {
     const empty = document.createElement('p');
     empty.className = 'empty';
-    empty.textContent = HISTORY ? 'В моих табах не нашлось' : 'Ничего не нашлось';
+    empty.textContent = HISTORY ? 'Not in my tabs' : 'Nothing found';
     content.appendChild(empty);
   } else {
     const { section, tiles } = resultSection(
-      `Результаты · ${matches.length}`, matches.map((m) => m.link), q
+      `Results · ${matches.length}`, matches.map((m) => m.link), q
     );
     content.appendChild(section);
     resultTiles = tiles;
@@ -234,7 +234,7 @@ async function appendHistoryResults(query, token) {
 
   const content = $('#content');
   if (!resultTiles.length) content.innerHTML = '';
-  const { section, tiles } = resultSection('История', fresh, q.toLowerCase());
+  const { section, tiles } = resultSection('History', fresh, q.toLowerCase());
   content.appendChild(section);
   const wasEmpty = !resultTiles.length;
   resultTiles.push(...tiles);
@@ -330,7 +330,7 @@ async function unlock(blob) {
         lock.classList.add('hidden');
         resolve(data);
       } catch {
-        error.textContent = 'Неверный пароль';
+        error.textContent = 'Wrong password';
         form.classList.remove('shake');
         requestAnimationFrame(() => form.classList.add('shake'));
         passwordInput.select();
@@ -348,7 +348,7 @@ async function main() {
     if (!res.ok) throw new Error();
     blob = await res.json();
   } catch {
-    showError('Файл links.enc.json не найден. Запустите <code>npm run encrypt</code> и задеплойте.');
+    showError('links.enc.json not found. Run <code>npm run encrypt</code> and deploy.');
     return;
   }
 
