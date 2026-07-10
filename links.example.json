@@ -1,0 +1,30 @@
+{
+  "categories": [
+    {
+      "name": "Каждый день",
+      "links": [
+        { "name": "Gmail", "url": "https://mail.google.com", "keywords": ["почта", "mail"] },
+        { "name": "Календарь", "url": "https://calendar.google.com", "keywords": ["calendar"] },
+        { "name": "YouTube", "url": "https://www.youtube.com", "keywords": ["видео"] },
+        { "name": "Переводчик", "url": "https://translate.google.com", "keywords": ["translate"] }
+      ]
+    },
+    {
+      "name": "Работа",
+      "links": [
+        { "name": "GitHub", "url": "https://github.com", "keywords": ["git", "код"] },
+        { "name": "Claude", "url": "https://claude.ai", "keywords": ["ai", "ии"] },
+        { "name": "ChatGPT", "url": "https://chatgpt.com", "keywords": ["ai", "ии"] },
+        { "name": "Stack Overflow", "url": "https://stackoverflow.com", "keywords": ["so", "вопросы"] }
+      ]
+    },
+    {
+      "name": "Сервисы",
+      "links": [
+        { "name": "Google Drive", "url": "https://drive.google.com", "keywords": ["диск", "файлы"] },
+        { "name": "Карты", "url": "https://maps.google.com", "keywords": ["maps"] },
+        { "name": "Википедия", "url": "https://ru.wikipedia.org", "keywords": ["wiki"] }
+      ]
+    }
+  ]
+}

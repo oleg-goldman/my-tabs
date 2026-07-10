@@ -1,0 +1,6 @@
+# локальные (нешифрованные) данные — НЕ коммитить
+links.local.json
+.favicon-cache.json
+
+node_modules/
+.DS_Store

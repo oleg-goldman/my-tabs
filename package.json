@@ -1,0 +1,12 @@
+{
+  "name": "my-tabs",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Личная new-tab страница: зашифрованные ссылки + мгновенный поиск",
+  "type": "module",
+  "scripts": {
+    "encrypt": "node scripts/encrypt.mjs",
+    "decrypt": "node scripts/decrypt.mjs",
+    "serve": "python3 -m http.server 4173"
+  }
+}
