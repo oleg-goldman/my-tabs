@@ -117,7 +117,15 @@ async function main() {
   fs.writeFileSync(ICON_CACHE, JSON.stringify(cache, null, 2));
 
   const password = await getPassword();
-  const salt = randomBytes(16);
+  // соль переиспользуем из прежнего блоба: при том же пароле ключ не меняется,
+  // и браузеры не спрашивают пароль заново после каждого обновления ссылок.
+  // Свежая соль: --new-salt (например, при смене пароля).
+  let salt = randomBytes(16);
+  if (!process.argv.includes('--new-salt') && fs.existsSync(OUT)) {
+    try {
+      salt = Buffer.from(JSON.parse(fs.readFileSync(OUT, 'utf8')).salt, 'base64');
+    } catch { /* битый блоб — берём новую соль */ }
+  }
   const iv = randomBytes(12);
 
   const material = await wc.subtle.importKey(
