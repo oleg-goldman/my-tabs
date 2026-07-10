@@ -7,6 +7,8 @@
   --accent: #4f7cff;
   --accent-soft: rgba(79, 124, 255, 0.12);
   --hover: rgba(16, 24, 40, 0.05);
+  --h-grad-1: #b4bac2;
+  --h-grad-2: #63696f;
   --shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 8px 24px rgba(16, 24, 40, 0.06);
   --shadow-hover: 0 2px 4px rgba(16, 24, 40, 0.06), 0 12px 32px rgba(16, 24, 40, 0.12);
   --mark: rgba(79, 124, 255, 0.18);
@@ -21,6 +23,8 @@ html[data-theme="dark"] {
   --accent: #6b93ff;
   --accent-soft: rgba(107, 147, 255, 0.16);
   --hover: rgba(255, 255, 255, 0.06);
+  --h-grad-1: #7b828c;
+  --h-grad-2: #40454c;
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
   --shadow-hover: 0 2px 4px rgba(0, 0, 0, 0.35), 0 12px 32px rgba(0, 0, 0, 0.5);
   --mark: rgba(107, 147, 255, 0.28);
@@ -36,6 +40,8 @@ html[data-theme="dark"] {
     --accent: #6b93ff;
     --accent-soft: rgba(107, 147, 255, 0.16);
     --hover: rgba(255, 255, 255, 0.06);
+    --h-grad-1: #7b828c;
+    --h-grad-2: #40454c;
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
     --shadow-hover: 0 2px 4px rgba(0, 0, 0, 0.35), 0 12px 32px rgba(0, 0, 0, 0.5);
     --mark: rgba(107, 147, 255, 0.28);
@@ -154,7 +160,7 @@ main {
 
 .search-icon {
   position: absolute;
-  left: 16px;
+  left: 19px;
   width: 18px;
   height: 18px;
   color: var(--text-dim);
@@ -163,12 +169,12 @@ main {
 
 #search {
   width: 100%;
-  padding: 14px 52px 14px 46px;
+  padding: 15px 54px 15px 48px;
   font-size: 16px;
   color: var(--text);
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 999px;
   box-shadow: var(--shadow);
   outline: none;
   transition: border-color 0.15s, box-shadow 0.15s;
@@ -183,7 +189,7 @@ main {
 
 .search-kbd {
   position: absolute;
-  right: 14px;
+  right: 18px;
   pointer-events: none;
 }
 
@@ -200,13 +206,13 @@ kbd {
 
 .theme-btn {
   flex: none;
-  width: 46px;
-  height: 46px;
+  width: 50px;
+  height: 50px;
   font-size: 19px;
   line-height: 1;
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 50%;
   box-shadow: var(--shadow);
   cursor: pointer;
 }
@@ -218,14 +224,24 @@ kbd {
 section { margin-bottom: 44px; }
 
 section h2 {
-  margin: 0 0 22px;
-  font-size: 17px;
-  font-weight: 800;
-  letter-spacing: 0.18em;
+  margin: 0 0 24px;
+  font-family: "Avenir Next Condensed", "Arial Narrow", "Helvetica Neue", -apple-system, sans-serif;
+  font-size: 34px;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: 0.04em;
   text-align: center;
   text-transform: uppercase;
-  color: var(--text-dim);
-  opacity: 0.75;
+  background: linear-gradient(180deg, var(--h-grad-1), var(--h-grad-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+section h2 mark {
+  background: var(--mark);
+  -webkit-text-fill-color: var(--text);
 }
 
 .grid {
